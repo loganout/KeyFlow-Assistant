@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="./build/icon.png" alt="Ícone do Assistant" width="104">
+  <img src="./build/icon.png" alt="Ícone do KeyFlow Assistant" width="104">
 </p>
 
-<h1 align="center">Assistant</h1>
+<h1 align="center">KeyFlow Assistant</h1>
 
 <p align="center">
   Gerenciador de ações manuais para Windows com perfis por aplicativo, sequências de teclado e mouse, repetição controlada, cooldowns e HUD transparente.
@@ -11,65 +11,84 @@
 <p align="center">
   <img alt="Versão" src="https://img.shields.io/badge/versão-0.4.1-2563eb?style=flat-square">
   <img alt="Plataforma" src="https://img.shields.io/badge/plataforma-Windows-0078d4?style=flat-square&logo=windows11&logoColor=white">
-  <img alt="Electron" src="https://img.shields.io/badge/Electron-43-47848f?style=flat-square&logo=electron&logoColor=white">
-  <img alt="React" src="https://img.shields.io/badge/React-19-149eca?style=flat-square&logo=react&logoColor=white">
-  <img alt="Licença" src="https://img.shields.io/badge/licença-MIT-16a34a?style=flat-square">
+  <img alt="Arquitetura" src="https://img.shields.io/badge/arquitetura-x64-475569?style=flat-square">
+  <img alt="Distribuição" src="https://img.shields.io/badge/distribuição-Releases-16a34a?style=flat-square&logo=github">
+  <img alt="Código-fonte" src="https://img.shields.io/badge/código--fonte-não%20distribuído-7c3aed?style=flat-square">
+</p>
+
+<p align="center">
+  <a href="https://github.com/loganout/KeyFlow-Assistant/releases/latest"><strong>Baixar a versão mais recente</strong></a>
+  ·
+  <a href="https://github.com/loganout/KeyFlow-Assistant/issues">Relatar um problema</a>
+</p>
+
+<br>
+
+<p align="center">
+  <img
+    src="./screenshots/keyflow-assistant-preview.png"
+    alt="Interface do KeyFlow Assistant"
+    width="900"
+  >
+</p>
+
+<p align="center">
+  <sub>Interface principal do KeyFlow Assistant.</sub>
 </p>
 
 ---
 
-## Sobre o projeto
+## Sobre o KeyFlow Assistant
 
-O **Assistant** permite transformar um acionamento manual em uma sequência organizada de entradas de teclado e mouse. As ações ficam separadas por perfil, conjunto e aplicativo alvo, permitindo manter configurações diferentes para jogos, programas e rotinas de acessibilidade.
+O **KeyFlow Assistant** permite transformar um acionamento manual em uma sequência organizada de entradas de teclado e mouse. As ações podem ser separadas por perfil, conjunto e aplicativo-alvo, facilitando a manutenção de configurações diferentes para jogos, programas e rotinas de acessibilidade.
 
-O projeto foi desenvolvido com foco em:
+O aplicativo foi desenvolvido com foco em:
 
-- configuração visual, sem editar arquivos manualmente;
+- configuração visual, sem edição manual de arquivos;
 - execução previsível e fácil de interromper;
-- HUD discreto que não bloqueia a tela;
-- dados armazenados localmente;
+- HUD discreto e reposicionável;
+- armazenamento local das configurações;
 - reutilização dos mesmos atalhos em aplicativos diferentes;
 - proteção contra entradas presas e execuções fora de contexto.
 
 > [!IMPORTANT]
-> O Assistant não lê memória, pixels, vida, inventário, inimigos ou qualquer estado interno do aplicativo alvo. Ele não injeta código em outros processos e não procura contornar sistemas de proteção. Todas as ações partem de um comando configurado pelo usuário.
+> O KeyFlow Assistant não lê memória, pixels, vida, inventário, inimigos ou qualquer estado interno do aplicativo-alvo. Ele não injeta código em outros processos e não procura contornar mecanismos de proteção. Todas as ações são configuradas e iniciadas pelo usuário.
 
 ## Sumário
 
 - [Principais recursos](#principais-recursos)
 - [Requisitos](#requisitos)
-- [Instalação para usuários](#instalação-para-usuários)
+- [Download e instalação](#download-e-instalação)
 - [Primeiros passos](#primeiros-passos)
 - [Repetição da sequência](#repetição-da-sequência)
-- [Cooldowns e cargas](#cooldowns-e-cargas)
+- [Cooldowns, grupos e cargas](#cooldowns-grupos-e-cargas)
 - [Overlay e menu radial](#overlay-e-menu-radial)
-- [Execução pelo código-fonte](#execução-pelo-código-fonte)
-- [Gerar instalador](#gerar-instalador)
 - [Dados, backup e privacidade](#dados-backup-e-privacidade)
 - [Solução de problemas](#solução-de-problemas)
 - [Limites operacionais](#limites-operacionais)
-- [Estrutura do projeto](#estrutura-do-projeto)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+- [Uso responsável](#uso-responsável)
+- [Relatar problemas](#relatar-problemas)
+- [Distribuição e direitos autorais](#distribuição-e-direitos-autorais)
 
 ## Principais recursos
 
 ### Perfis e conjuntos
 
 - Perfis associados ao executável de cada jogo ou programa.
-- Detecção automática do aplicativo em primeiro plano.
+- Detecção do aplicativo em primeiro plano.
 - Uso do mesmo atalho em perfis diferentes.
-- Conjuntos independentes dentro de um perfil, úteis para classes, personagens, builds ou contextos de trabalho.
+- Conjuntos independentes dentro de um perfil.
+- Organização por classes, personagens, builds ou contextos de trabalho.
 - Atalhos próprios para alternar conjuntos sem abrir a janela principal.
 
 ### Acionamentos
 
-O Assistant reconhece:
+O KeyFlow Assistant reconhece:
 
 - teclado e combinações com modificadores;
 - Mouse 4 e Mouse 5;
 - roda do mouse para cima e para baixo;
-- controle XInput experimental;
+- controles compatíveis com XInput, em caráter experimental;
 - botões A, B, X, Y, LB, RB, LT, RT, direcional, Start, Back, L3 e R3.
 
 Modos disponíveis:
@@ -94,7 +113,7 @@ Cada ação pode combinar etapas de:
 - executar outra ação como subação reutilizável;
 - reproduzir um aviso sonoro.
 
-Também estão disponíveis:
+O editor também oferece:
 
 - captura visual de teclas e botões;
 - reordenação e duplicação de etapas;
@@ -105,12 +124,12 @@ Também estão disponíveis:
 
 ### Repetição controlada
 
-- Quantidade definida entre `1` e `9.999` ciclos.
+- Quantidade configurável entre `1` e `9.999` ciclos.
 - Valor `-1` para repetição contínua.
 - Intervalo configurável entre os ciclos.
 - Interrupção ao pressionar novamente o mesmo atalho.
 - Botão **Parar execução** na interface.
-- Parada automática opcional ao perder o foco do aplicativo alvo.
+- Parada automática opcional ao perder o foco do aplicativo-alvo.
 - Progresso exibido no editor e no overlay.
 
 ### Cooldowns, grupos e cargas
@@ -125,15 +144,15 @@ Também estão disponíveis:
 
 ### Overlay transparente
 
-- HUD sempre acima do aplicativo alvo.
-- Fundo da janela totalmente transparente.
+- HUD sempre acima do aplicativo-alvo.
+- Fundo da janela transparente.
 - Modos **Minimalista**, **Micro HUD** e **Barra horizontal**.
 - Exibição de tecla, nome, estado, repetição, cargas e cooldown.
 - Opacidade e escala configuráveis.
 - Opção para mostrar somente ações em atividade.
 - Ocultação automática fora do perfil associado.
-- Modo de passagem de cliques para não interferir no jogo.
-- Reposicionamento livre com posição salva automaticamente.
+- Passagem de cliques para não interferir no aplicativo.
+- Reposicionamento livre, com posição salva automaticamente.
 
 ### Menu radial
 
@@ -141,13 +160,13 @@ Também estão disponíveis:
 - Acionamento por teclado ou mouse.
 - Seleção pela direção do cursor.
 - Zona central para cancelar.
-- Janela transparente e sem captura permanente do foco.
+- Janela transparente, sem captura permanente do foco.
 
 ### Organização e operação
 
 - Busca por nome, descrição ou tecla.
 - Fila opcional quando outra ação já está em execução.
-- Bandeja do Windows.
+- Minimização para a bandeja do Windows.
 - Inicialização automática opcional.
 - Pausa global do motor.
 - Parada de emergência em `Ctrl + Shift + F12`.
@@ -157,55 +176,47 @@ Também estão disponíveis:
 
 ## Requisitos
 
-### Para usar o aplicativo instalado
-
 | Requisito | Observação |
 |---|---|
 | Sistema operacional | Windows 10 ou Windows 11, 64 bits. |
-| PowerShell | Windows PowerShell disponível no sistema; já vem instalado normalmente no Windows. |
-| Permissões | O Assistant e o aplicativo alvo devem usar o mesmo nível de permissão. |
+| PowerShell | Normalmente já incluído no Windows. |
+| Permissões | O Assistant e o aplicativo-alvo devem usar o mesmo nível de permissão. |
 | Modo de exibição | Para o overlay, prefira modo janela ou janela sem bordas. |
 | Controle | Opcional; deve ser compatível com XInput. |
 
-A versão instalada não exige VS Code, Node.js ou npm.
+A versão instalada **não exige** VS Code, Node.js, npm ou ferramentas de desenvolvimento.
 
-### Para desenvolver ou compilar
+## Download e instalação
 
-- Windows 10 ou Windows 11, 64 bits;
-- Node.js 22 LTS ou 24;
-- npm;
-- Git, opcional;
-- VS Code, opcional, mas recomendado.
-
-## Instalação para usuários
-
-1. Abra a área **Releases** deste repositório.
-2. Baixe o instalador da versão mais recente, com nome semelhante a:
+1. Abra a página de [Releases](https://github.com/loganout/KeyFlow-Assistant/releases).
+2. Entre na versão mais recente.
+3. Em **Assets**, baixe o instalador para Windows, com nome semelhante a:
 
 ```text
 Assistant-0.4.1-x64.exe
 ```
 
-3. Execute o instalador.
-4. Escolha a pasta de instalação.
-5. Abra o **Assistant** pelo menu Iniciar ou pelo atalho da área de trabalho.
-
-Na primeira execução, o Assistant prepara localmente o componente responsável pelas entradas do Windows. Esse processo pode levar alguns segundos.
+4. Execute o instalador.
+5. Escolha a pasta de instalação.
+6. Abra o **KeyFlow Assistant** pelo menu Iniciar ou pelo atalho da área de trabalho.
 
 > [!NOTE]
-> O projeto ainda pode ser distribuído sem assinatura digital. Nesse caso, o Windows SmartScreen ou um antivírus pode solicitar confirmação. Verifique se o arquivo foi obtido das Releases oficiais ou compile diretamente pelo código-fonte.
+> O GitHub adiciona automaticamente arquivos chamados **Source code (zip)** e **Source code (tar.gz)** em todas as Releases. Esses arquivos correspondem apenas ao conteúdo público deste repositório e **não contêm o código-fonte do aplicativo**. Para instalar o programa, baixe o arquivo `.exe` anexado em **Assets**.
+
+> [!WARNING]
+> O aplicativo pode ser distribuído sem assinatura digital. Nesse caso, o Windows SmartScreen ou algum antivírus pode solicitar confirmação. Baixe o instalador somente das Releases oficiais deste repositório.
 
 > [!TIP]
-> Caso o jogo seja executado como administrador, abra o Assistant como administrador também. Um programa sem elevação normalmente não consegue enviar entradas para outro processo elevado.
+> Caso o jogo ou programa-alvo seja executado como administrador, abra o KeyFlow Assistant como administrador também. Um processo sem elevação normalmente não consegue enviar entradas para outro processo elevado.
 
 ## Primeiros passos
 
-### 1. Configure o perfil
+### 1. Configure um perfil
 
 1. Selecione ou crie um perfil.
 2. Abra o jogo ou programa desejado.
 3. Clique em **Detectar**.
-4. Mude para a janela alvo e aguarde a detecção.
+4. Mude para a janela-alvo e aguarde a detecção.
 5. Confirme o nome do executável.
 
 ### 2. Crie uma ação
@@ -229,7 +240,7 @@ Acionamento: F7
 5. Pressionar tecla 3 por 40 ms
 ```
 
-### 3. Faça um teste seguro
+### 3. Faça um teste inicial
 
 Antes de usar em um jogo:
 
@@ -262,26 +273,26 @@ A execução continua até uma destas condições:
 
 - o mesmo atalho ser pressionado novamente;
 - o botão **Parar execução** ser acionado;
-- a parada de emergência ser usada;
+- a parada de emergência ser utilizada;
 - o motor ser pausado;
-- o aplicativo alvo perder o foco, quando essa proteção estiver ativada;
-- o Assistant ser encerrado.
+- o aplicativo-alvo perder o foco, quando essa proteção estiver ativada;
+- o KeyFlow Assistant ser encerrado.
 
 > [!WARNING]
 > Use intervalos adequados. No modo contínuo, o intervalo mínimo efetivo é de 50 ms. O modo **Enquanto segura** possui repetição própria e não pode ser combinado com a repetição da sequência.
 
-## Cooldowns e cargas
+## Cooldowns, grupos e cargas
 
-O cooldown do Assistant é um contador local. Ele não lê o cooldown real do jogo ou programa.
+O cooldown do KeyFlow Assistant é um contador local. Ele não lê o cooldown real do jogo ou programa.
 
 É possível escolher quando o contador começa:
 
 - **Ao iniciar:** começa no primeiro ciclo.
 - **Ao finalizar:** começa após a última repetição ou após uma interrupção já iniciada.
 
-As cargas e cooldowns são consumidos uma vez por acionamento da ação, não uma vez por ciclo.
+As cargas e os cooldowns são consumidos uma vez por acionamento da ação, não uma vez por ciclo.
 
-Os grupos compartilhados permitem que várias ações usem o mesmo bloqueio. Um exemplo comum é um grupo para poções, no qual usar uma ação bloqueia temporariamente as demais.
+Os grupos compartilhados permitem que várias ações utilizem o mesmo bloqueio. Um exemplo comum é um grupo de poções, no qual o uso de uma ação bloqueia temporariamente as demais.
 
 ## Overlay e menu radial
 
@@ -294,9 +305,7 @@ Os grupos compartilhados permitem que várias ações usem o mesmo bloqueio. Um 
 
 A posição é salva automaticamente. O mesmo comando também está disponível no menu da bandeja.
 
-### Evitar que o HUD atrapalhe
-
-Configuração recomendada para jogos:
+### Configuração recomendada para jogos
 
 ```text
 Ocultar fora do perfil: ativado
@@ -308,67 +317,14 @@ Escala: 0,85 a 1,00
 
 Caso o overlay não apareça sobre um jogo em tela cheia, use **janela sem bordas** ou **modo janela**.
 
-## Execução pelo código-fonte
-
-Clone ou baixe este repositório e abra o terminal na pasta do projeto.
-
-```bash
-npm install
-npm run dev
-```
-
-No Windows, também é possível executar:
-
-```text
-INICIAR.bat
-```
-
-O terminal deve permanecer aberto somente durante o modo de desenvolvimento.
-
-### Scripts disponíveis
-
-| Comando | Função |
-|---|---|
-| `npm run dev` | Inicia Vite e Electron em modo de desenvolvimento. |
-| `npm run build` | Gera a interface de produção na pasta `dist`. |
-| `npm run preview` | Visualiza o build do Vite localmente. |
-| `npm run dist` | Gera o instalador NSIS para Windows. |
-| `npm run dist:portable` | Gera uma versão portátil. |
-
-## Gerar instalador
-
-Execute:
-
-```text
-GERAR_INSTALADOR.bat
-```
-
-Ou use o terminal:
-
-```bash
-npm install
-npm run dist
-```
-
-O instalador será criado na pasta:
-
-```text
-release/
-```
-
-Para gerar a versão portátil:
-
-```bash
-npm run dist:portable
-```
-
 ## Dados, backup e privacidade
 
 Na versão atual:
 
 - as configurações permanecem no computador do usuário;
 - não é necessário criar conta;
-- não há telemetria ou sincronização online;
+- não há telemetria;
+- não há sincronização online;
 - o funcionamento normal não depende de internet após a instalação.
 
 A pasta de dados pode ser aberta por:
@@ -383,13 +339,13 @@ No Windows, ela normalmente corresponde a:
 %APPDATA%\Assistant\
 ```
 
-O arquivo principal é:
+O arquivo principal de configuração é:
 
 ```text
 assistant-config.json
 ```
 
-Use os recursos de **Exportar backup** e **Exportar perfil** antes de atualizar manualmente arquivos do projeto.
+Antes de atualizar, formatar o computador ou alterar configurações importantes, utilize **Exportar backup** ou **Exportar perfil**.
 
 ## Solução de problemas
 
@@ -400,11 +356,11 @@ Verifique:
 - se **Ação ativa** está habilitada;
 - se o executável do perfil está configurado corretamente;
 - se o conjunto correto está ativo;
-- se a janela alvo está em primeiro plano;
+- se a janela-alvo está em primeiro plano;
 - se a ação está em cooldown ou sem cargas;
 - se o motor está pausado;
-- se outra ação está executando e o modo atual bloqueia novas ações;
-- se o Assistant e o aplicativo alvo usam o mesmo nível de permissão.
+- se outra ação está em execução;
+- se o KeyFlow Assistant e o aplicativo-alvo usam o mesmo nível de permissão.
 
 ### O overlay não aparece
 
@@ -418,33 +374,33 @@ Verifique:
 ### O overlay não pode ser arrastado
 
 - Use **Preferências → Reposicionar overlay**.
-- Durante o reposicionamento, arraste pela alça exibida.
+- Arraste pela alça exibida durante o modo de posicionamento.
 - Clique em **Concluir** para restaurar a passagem de cliques.
 
-### O jogo está como administrador
+### O aplicativo-alvo está sendo executado como administrador
 
-Feche o Assistant e abra-o usando **Executar como administrador**. O nível de permissão precisa ser igual ao do aplicativo alvo.
+Feche o KeyFlow Assistant e abra-o usando **Executar como administrador**. O nível de permissão precisa ser igual ao do aplicativo-alvo.
 
 ### O antivírus sinalizou o componente de entrada
 
-Ferramentas que capturam atalhos globais e enviam entradas podem receber análise adicional de antivírus. Baixe somente das Releases oficiais, confira o código-fonte ou compile localmente.
+Ferramentas que capturam atalhos globais e enviam entradas podem receber análise adicional de antivírus. Confirme que o instalador foi obtido das Releases oficiais.
 
 ### O CMD fica aberto
 
-Isso ocorre apenas com `INICIAR.bat` ou `npm run dev`. Instale o aplicativo gerado por `npm run dist` para usá-lo sem terminal.
+Isso ocorre apenas nas versões usadas durante desenvolvimento ou testes internos. A versão instalada pela Release deve funcionar sem terminal aberto.
 
 ### Mouse ou controle não foi reconhecido
 
 - Abra o diagnóstico e confirme se o motor está pronto.
-- Use a opção de recompilar o componente nativo.
-- Para controle, confirme que o dispositivo é reconhecido como XInput pelo Windows.
-- O suporte a controle ainda é experimental.
+- Utilize a opção de reparar ou recompilar o componente de entrada, quando disponível.
+- Para controles, confirme que o dispositivo é reconhecido como XInput pelo Windows.
+- O suporte a controles ainda é experimental.
 
 ## Limites operacionais
 
 | Item | Limite atual |
 |---|---:|
-| Etapas autorais por ação | 30 |
+| Etapas configuradas por ação | 30 |
 | Etapas após expansão de subações | 60 |
 | Duração máxima de cada ciclo | 20 segundos |
 | Repetições finitas | 1 a 9.999 |
@@ -460,11 +416,13 @@ A parada de emergência padrão é:
 Ctrl + Shift + F12
 ```
 
-Ela interrompe execuções, repetições, fila, timers e libera entradas mantidas pelo Assistant.
+Ela interrompe execuções, repetições, fila e temporizadores, além de liberar entradas mantidas pelo KeyFlow Assistant.
 
-## Escopo e uso responsável
+## Uso responsável
 
-O Assistant foi projetado como uma ferramenta local de atalhos, acessibilidade e qualidade de vida. O projeto não oferece:
+O KeyFlow Assistant foi projetado como uma ferramenta local de atalhos, acessibilidade e qualidade de vida.
+
+O aplicativo não oferece:
 
 - leitura de memória de outros processos;
 - reconhecimento de tela ou análise de pixels;
@@ -473,59 +431,34 @@ O Assistant foi projetado como uma ferramenta local de atalhos, acessibilidade e
 - coleta automática;
 - injeção de código;
 - ocultação do processo;
-- evasão de anti-cheat.
+- evasão de sistemas de proteção ou anti-cheat.
 
-Cada jogo ou serviço possui regras próprias. Verifique os termos de uso do aplicativo alvo antes de utilizar sequências de entrada, especialmente repetições contínuas.
+Cada jogo, programa ou serviço possui regras próprias. Verifique os termos de uso do aplicativo-alvo antes de utilizar sequências de entrada, especialmente repetições contínuas.
 
-## Estrutura do projeto
+O usuário é responsável pelas ações configuradas e pelo uso do aplicativo em conformidade com as regras do software-alvo.
 
-```text
-Assistant/
-├── build/                    # Ícones do aplicativo e da bandeja
-├── electron/
-│   ├── main.cjs              # Processo principal, execução e janelas
-│   ├── preload.cjs           # Ponte segura entre Electron e React
-│   └── windows/
-│       ├── AssistantInputHelper.cs
-│       └── build-helper.ps1
-├── src/
-│   ├── App.jsx               # Interface principal, overlay e menu radial
-│   ├── main.jsx              # Entrada do React
-│   └── styles.css            # Sistema visual
-├── GERAR_INSTALADOR.bat
-├── INICIAR.bat
-├── package.json
-└── vite.config.js
-```
+## Relatar problemas
 
-### Tecnologias
+Para relatar uma falha ou sugerir uma melhoria, abra uma [Issue](https://github.com/loganout/KeyFlow-Assistant/issues).
 
-- Electron;
-- React;
-- Vite;
-- JavaScript;
-- C# e Win32 para captura e envio de entradas;
-- NSIS por meio do electron-builder.
+Ao relatar um problema, inclua, quando possível:
 
-## Contribuição
+- versão do KeyFlow Assistant;
+- versão do Windows;
+- nome do aplicativo-alvo;
+- modo de acionamento utilizado;
+- passos para reproduzir;
+- captura de tela sem informações pessoais;
+- mensagem apresentada no diagnóstico.
 
-Contribuições são bem-vindas.
+Não publique arquivos de configuração que contenham informações pessoais ou caminhos privados sem revisá-los antes.
 
-1. Faça um fork do repositório.
-2. Crie uma branch para sua alteração:
+## Distribuição e direitos autorais
 
-```bash
-git checkout -b feature/minha-melhoria
-```
+O KeyFlow Assistant é distribuído em formato compilado para usuários finais.
 
-3. Instale as dependências e teste localmente.
-4. Faça commits objetivos.
-5. Abra um Pull Request explicando o problema, a solução e como validar a mudança.
+O código-fonte do aplicativo não é distribuído por este repositório. O acesso ao instalador não concede autorização para copiar, modificar, redistribuir, revender ou criar versões derivadas do aplicativo.
 
-Ao contribuir com o motor de entrada, preserve os princípios do projeto: execução iniciada pelo usuário, interrupção confiável, ausência de leitura interna do aplicativo alvo e nenhuma tentativa de evasão de mecanismos de proteção.
+Copyright © 2026 Daniel. Todos os direitos reservados.
 
-## Licença
-
-Distribuído sob a licença [MIT](./LICENSE).
-
-Copyright © Daniel.
+Para solicitações relacionadas a distribuição, parceria ou autorização de uso, utilize a área de Issues do repositório.
