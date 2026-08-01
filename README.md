@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./build/icon.png" alt="Ícone do KeyFlow Assistant" width="104">
+  <img src="./screenshots/icon.png" alt="Ícone do KeyFlow Assistant" width="104">
 </p>
 
 <h1 align="center">KeyFlow Assistant</h1>
@@ -26,7 +26,7 @@
 
 <p align="center">
   <img
-    src="./screenshots/keyflow-assistant-preview.png"
+    src="./screenshots/Screenshot_1.png"
     alt="Interface do KeyFlow Assistant"
     width="900"
   >
